@@ -1,0 +1,80 @@
+
+config dnsmasq
+	option domainneeded '1'
+	option boguspriv '1'
+	option filterwin2k '0'
+	option localise_queries '1'
+	option rebind_protection '1'
+	option rebind_localhost '1'
+	option local '/lan/'
+	option domain 'lan'
+	option expandhosts '1'
+	option nonegcache '0'
+	option authoritative '1'
+	option readethers '1'
+	option leasefile '/tmp/dhcp.leases'
+	option resolvfile '/tmp/resolv.conf.d/resolv.conf.auto'
+	option nonwildcard '1'
+	option localservice '1'
+	option ednspacket_max '1232'
+	option noresolv '0'
+
+config dhcp 'lan'
+	option interface 'lan'
+	option start '100'
+	option limit '150'
+	option leasetime '12h'
+	option dhcpv4 'server'
+	option dhcpv6 'server'
+	option ra 'server'
+	option ra_slaac '1'
+	list ra_flags 'managed-config'
+	list ra_flags 'other-config'
+
+config dhcp 'wan'
+	option interface 'wan'
+	option ignore '1'
+
+config odhcpd 'odhcpd'
+	option maindhcp '0'
+	option leasefile '/tmp/hosts/odhcpd'
+	option leasetrigger '/usr/sbin/odhcpd-update'
+	option loglevel '4'
+
+
+config host
+	option name 'AC9'
+	option ip '192.168.3.3'
+	option mac 'C8:3A:35:21:4C:80'
+	option dns '1'
+
+config host
+	option name 'ax6000-1'
+	option ip '192.168.3.5'
+	option mac '64:64:4A:B5:3F:40'
+	option dns '1'
+
+config host
+	option name 'ax6000-2'
+	option ip '192.168.3.6'
+	option mac '64:64:4A:B5:3E:B4'
+	option dns '1'
+
+config host
+	option name 'f3'
+	option ip '192.168.3.9'
+	option mac '4A:BE:76:A7:58:A2'
+	option dns '1'
+
+config host
+	option name 'msi-85'
+	option ip '192.168.3.10'
+	option mac 'D4:3D:7E:BA:65:A9'
+	option dns '1'
+
+config host
+	option name 'RedmiMAX86'
+	option dns '1'
+	option mac '20:72:a9:2e:0a:24'
+	option ip '192.168.3.8'
+
